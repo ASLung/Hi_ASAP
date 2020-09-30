@@ -1,0 +1,33 @@
+
+Call:
+lm(formula = site_pm2.5 ~ traffic_passing_by + traffic_stop_n_go + 
+    temple + market + gas_stat + vendor + school + season + high_level_pm2.5 + 
+    ws + temperature + rh, data = data_array)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-42.04  -3.67  -1.30   1.92 531.61 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        -15.71770    1.85270  -8.484  < 2e-16 ***
+traffic_passing_by   1.75022    0.27959   6.260 3.90e-10 ***
+traffic_stop_n_go    3.37337    0.30627  11.014  < 2e-16 ***
+temple               3.39578    0.24966  13.601  < 2e-16 ***
+market               3.72101    0.27961  13.308  < 2e-16 ***
+gas_stat             1.51791    0.27706   5.479 4.32e-08 ***
+vendor               2.88419    0.39824   7.242 4.51e-13 ***
+school              -0.99560    0.27822  -3.578 0.000346 ***
+season               8.43331    0.41688  20.230  < 2e-16 ***
+high_level_pm2.5     1.08580    0.01057 102.685  < 2e-16 ***
+ws                  -1.23720    0.13769  -8.985  < 2e-16 ***
+temperature          0.30186    0.03886   7.769 8.16e-15 ***
+rh                   0.05539    0.01036   5.344 9.15e-08 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Residual standard error: 12.53 on 32949 degrees of freedom
+  (1518 observations deleted due to missingness)
+Multiple R-squared:  0.5574,	Adjusted R-squared:  0.5572 
+F-statistic:  3457 on 12 and 32949 DF,  p-value: < 2.2e-16
+
