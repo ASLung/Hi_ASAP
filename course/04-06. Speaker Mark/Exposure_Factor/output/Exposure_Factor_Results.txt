@@ -1,0 +1,114 @@
+[1] "Stepwise"
+
+Call:
+lm(formula = ALP_PM2.5 ~ Season + ALO_PM2.5 + S_Incense_JPaper + 
+    S_Other2 + Vent_D3_1, data = aa)
+
+Coefficients:
+     (Intercept)            Season         ALO_PM2.5  S_Incense_JPaper          S_Other2         Vent_D3_1  
+         12.5129            3.1117            0.3461            8.0470           -4.1376           -6.7595  
+
+[1] "Final model"
+
+Call:
+lm(formula = ALP_PM2.5 ~ ALO_PM2.5 + S_Incense_JPaper + S_Other2 + 
+    Vent_D3_1 + Vent_D3_2 + Season, data = aa)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-55.32  -9.41  -6.92  -0.77 415.84 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       12.45380    1.05795  11.772  < 2e-16 ***
+ALO_PM2.5          0.35080    0.05037   6.964 4.18e-12 ***
+S_Incense_JPaper   9.41805    3.73313   2.523  0.01170 *  
+S_Other2          -4.12492    2.23419  -1.846  0.06497 .  
+Vent_D3_1         -6.78389    1.94656  -3.485  0.00050 ***
+Vent_D3_2        -11.19743   10.49940  -1.066  0.28631    
+Season             3.05936    0.98541   3.105  0.00193 ** 
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Residual standard error: 23.95 on 2560 degrees of freedom
+Multiple R-squared:  0.03389,	Adjusted R-squared:  0.03162 
+F-statistic: 14.97 on 6 and 2560 DF,  p-value: < 2.2e-16
+
+[1] "Partial R2 of Season"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"         "Vent_D3_1"        "Vent_D3_2"        "Season"          
+
+$variables.reduced
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"         "Vent_D3_1"        "Vent_D3_2"       
+
+$partial.rsq
+[1] 0.003751055
+
+[1] "Partial R2 of Vent_D3_2"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"         "Vent_D3_1"        "Vent_D3_2"       
+
+$variables.reduced
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"         "Vent_D3_1"       
+
+$partial.rsq
+[1] 0.0005814468
+
+[1] "Partial R2 of Vent_D3_1"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"         "Vent_D3_1"       
+
+$variables.reduced
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"        
+
+$partial.rsq
+[1] 0.006366443
+
+[1] "Partial R2 of S_Other2"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"        "S_Incense_JPaper" "S_Other2"        
+
+$variables.reduced
+[1] "ALO_PM2.5"        "S_Incense_JPaper"
+
+$partial.rsq
+[1] 0.0011277
+
+[1] "Partial R2 of S_Incense_JPaper"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"        "S_Incense_JPaper"
+
+$variables.reduced
+[1] "ALO_PM2.5"
+
+$partial.rsq
+[1] 0.002277528
+
+[1] "Partial R2 of ALO_PM2.5"
+$adjustment
+[1] FALSE
+
+$variables.full
+[1] "ALO_PM2.5"
+
+$variables.reduced
+character(0)
+
+$partial.rsq
+[1] 0.02013581
+

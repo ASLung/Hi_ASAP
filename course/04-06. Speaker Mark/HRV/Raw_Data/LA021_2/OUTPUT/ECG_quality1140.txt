@@ -1,0 +1,2 @@
+1241, 1551927516, lead_off:False/0.888, confidence:0.604, big_r:0, small_r0, Polarity:0, No_R:101, hfb: 2
+1242, 1551927576, lead_off:False/0.885, confidence:0.740, big_r:0, small_r1, Polarity:0, No_R:104, hfb: 0

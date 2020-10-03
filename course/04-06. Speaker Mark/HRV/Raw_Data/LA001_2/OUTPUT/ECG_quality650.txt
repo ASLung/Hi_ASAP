@@ -1,0 +1,1 @@
+672, 1552089396, lead_off:False/0.799, confidence:0.726, big_r:0, small_r0, Polarity:0, No_R:106, hfb: 0

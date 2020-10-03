@@ -1,0 +1,1 @@
+2215, 1552244559, lead_off:False/0.868, confidence:0.745, big_r:0, small_r0, Polarity:0, No_R:106, hfb: 0

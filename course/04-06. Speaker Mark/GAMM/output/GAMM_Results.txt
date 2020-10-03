@@ -1,0 +1,270 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_SDNN5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.997170   0.098426  10.131  < 2e-16 ***
+PM2.5       -0.002243   0.000114 -19.663  < 2e-16 ***
+Loc_Out     -0.063581   0.027778  -2.289 0.022152 *  
+Season       0.068763   0.019058   3.608 0.000314 ***
+Age_G       -0.095829   0.032788  -2.923 0.003496 ** 
+BMI_G       -0.374163   0.040184  -9.311  < 2e-16 ***
+Gender       0.263251   0.057101   4.610 4.18e-06 ***
+TEM          0.015707   0.003397   4.624 3.92e-06 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df     F p-value    
+s(Activitymean) 1.000      1 5.828  0.0158 *  
+s(Time)         4.089      8 6.791 8.7e-13 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.539   
+  Scale est. = 0.028199  n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_LFHF5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.7740845  0.1418446   5.457 5.22e-08 ***
+PM2.5        0.0016953  0.0001974   8.589  < 2e-16 ***
+Loc_Out     -0.0016131  0.0418346  -0.039 0.969244    
+Season      -0.0873194  0.0265036  -3.295 0.000997 ***
+Age_G       -0.0937250  0.0648199  -1.446 0.148299    
+BMI_G        0.1292535  0.0793590   1.629 0.103475    
+Gender      -0.1901418  0.1125385  -1.690 0.091212 .  
+TEM         -0.0136256  0.0047637  -2.860 0.004261 ** 
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df     F  p-value    
+s(Activitymean) 4.997  4.997 5.939 1.99e-05 ***
+s(Time)         3.734  8.000 5.203 5.09e-10 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.195   
+  Scale est. = 0.075842  n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_HRsum5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.702e+00  2.866e-02  94.269  < 2e-16 ***
+PM2.5        6.430e-05  1.814e-05   3.546 0.000397 ***
+Loc_Out      1.611e-02  5.639e-03   2.857 0.004305 ** 
+Season      -2.997e-02  6.866e-03  -4.365 1.31e-05 ***
+Age_G        1.411e-02  1.468e-02   0.961 0.336487    
+BMI_G        3.552e-02  1.800e-02   1.973 0.048544 *  
+Gender      -2.111e-02  2.553e-02  -0.827 0.408358    
+TEM         -4.182e-03  9.447e-04  -4.427 9.88e-06 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df     F p-value    
+s(Activitymean) 5.363  5.363 57.33  <2e-16 ***
+s(Time)         4.499  8.000 12.07  <2e-16 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.275   
+  Scale est. = 0.0020767  n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_HRmean5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.004e+00  2.883e-02  69.503  < 2e-16 ***
+PM2.5        6.429e-05  1.830e-05   3.513 0.000449 ***
+Loc_Out      1.639e-02  5.686e-03   2.883 0.003967 ** 
+Season      -3.045e-02  6.883e-03  -4.424 1.00e-05 ***
+Age_G        1.424e-02  1.470e-02   0.968 0.332924    
+BMI_G        3.584e-02  1.803e-02   1.987 0.047005 *  
+Gender      -2.136e-02  2.558e-02  -0.835 0.403892    
+TEM         -4.308e-03  9.510e-04  -4.530 6.13e-06 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df     F p-value    
+s(Activitymean) 5.260   5.26 57.56  <2e-16 ***
+s(Time)         4.499   8.00 12.21  <2e-16 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.276   
+  Scale est. = 0.0020927  n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_RMSSD5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.5987334  0.0881784  18.131  < 2e-16 ***
+PM2.5       -0.0014167  0.0001266 -11.195  < 2e-16 ***
+Loc_Out     -0.0394014  0.0267474  -1.473    0.141    
+Season       0.0154015  0.0168795   0.912    0.362    
+Age_G       -0.1446256  0.0296774  -4.873 1.15e-06 ***
+BMI_G       -0.2475362  0.0363347  -6.813 1.15e-11 ***
+Gender       0.2831205  0.0516391   5.483 4.53e-08 ***
+TEM          0.0041894  0.0030400   1.378    0.168    
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df      F  p-value    
+s(Activitymean) 2.791  2.791 37.418  < 2e-16 ***
+s(Time)         5.593  8.000  6.037 4.98e-10 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.336   
+  Scale est. = 0.0312    n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_LF5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.4991768  0.1796534  13.911  < 2e-16 ***
+PM2.5       -0.0033207  0.0002506 -13.253  < 2e-16 ***
+Loc_Out     -0.1082114  0.0547961  -1.975   0.0484 *  
+Season       0.0325197  0.0350619   0.927   0.3537    
+Age_G       -0.3065345  0.0365852  -8.379  < 2e-16 ***
+BMI_G       -0.6002968  0.0449238 -13.363  < 2e-16 ***
+Gender       0.4714571  0.0643673   7.324 3.05e-13 ***
+TEM          0.0149031  0.0063119   2.361   0.0183 *  
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df      F  p-value    
+s(Activitymean) 2.342  2.342 17.857 5.16e-09 ***
+s(Time)         4.201  8.000  2.568 0.000137 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.409   
+  Scale est. = 0.12311   n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_HF5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.757045   0.200882   8.747  < 2e-16 ***
+PM2.5       -0.005032   0.000274 -18.367  < 2e-16 ***
+Loc_Out     -0.107232   0.059200  -1.811  0.07018 .  
+Season       0.114610   0.037342   3.069  0.00217 ** 
+Age_G       -0.230481   0.093748  -2.459  0.01401 *  
+BMI_G       -0.737445   0.114814  -6.423 1.54e-10 ***
+Gender       0.679061   0.162692   4.174 3.08e-05 ***
+TEM          0.027675   0.006739   4.107 4.11e-05 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                 edf Ref.df      F  p-value    
+s(Activitymean) 1.00      1 10.962 0.000941 ***
+s(Time)         3.89      8  5.679 8.59e-11 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.454   
+  Scale est. = 0.14649   n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_VLF5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.203e+00  1.828e-01  17.520  < 2e-16 ***
+PM2.5       -2.299e-03  2.722e-04  -8.444  < 2e-16 ***
+Loc_Out     -5.589e-02  5.564e-02  -1.005    0.315    
+Season      -1.330e-02  3.465e-02  -0.384    0.701    
+Age_G       -2.909e-01  7.057e-02  -4.122 3.86e-05 ***
+BMI_G       -3.814e-01  8.639e-02  -4.416 1.04e-05 ***
+Gender       5.306e-01  1.226e-01   4.327 1.56e-05 ***
+TEM         -5.982e-05  6.243e-03  -0.010    0.992    
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df      F  p-value    
+s(Activitymean) 2.976  2.976 46.280  < 2e-16 ***
+s(Time)         5.514  8.000  5.561 3.16e-09 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.247   
+  Scale est. = 0.1468    n = 3084
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+lg_TP5 ~ PM2.5 + Loc_Out + Season + Age_G + BMI_G + s(Activitymean, 
+    bs = c("tp")) + Gender + TEM + s(Time, bs = c("cc"))
+
+Parametric coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.2865652  0.1699862  19.334  < 2e-16 ***
+PM2.5       -0.0028062  0.0002413 -11.631  < 2e-16 ***
+Loc_Out     -0.0713909  0.0512037  -1.394    0.163    
+Season       0.0126118  0.0324002   0.389    0.697    
+Age_G       -0.2813406  0.0614220  -4.580 4.82e-06 ***
+BMI_G       -0.4732485  0.0751988  -6.293 3.55e-10 ***
+Gender       0.5209242  0.1068114   4.877 1.13e-06 ***
+TEM          0.0070698  0.0058328   1.212    0.226    
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+Approximate significance of smooth terms:
+                  edf Ref.df      F  p-value    
+s(Activitymean) 3.080   3.08 37.277  < 2e-16 ***
+s(Time)         5.399   8.00  5.278 8.52e-09 ***
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+
+R-sq.(adj) =  0.337   
+  Scale est. = 0.11332   n = 3084

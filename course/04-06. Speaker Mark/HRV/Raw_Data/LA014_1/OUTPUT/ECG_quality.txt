@@ -1,0 +1,7 @@
+1667, 1539671660, lead_off:False/2.397, confidence:0.715, big_r:1,  small_r0, Polarity:0, No_R:123, hfb: 7
+1668, 1539671720, lead_off:False/1.388, confidence:0.707, big_r:0,  small_r0, Polarity:0, No_R:116, hfb: 4
+1671, 1539671900, lead_off:False/1.154, confidence:0.608, big_r:1,  small_r0, Polarity:0, No_R:120, hfb: 12
+1672, 1539671960, lead_off:False/1.532, confidence:0.689, big_r:0,  small_r0, Polarity:0, No_R:119, hfb: 2
+2887, 1539744860, lead_off:False/10.096, confidence:0.325, big_r:1,  small_r0, Polarity:0, No_R:40, hfb: 3
+2888, 1539744920, lead_off:False/10.433, confidence:0.250, big_r:0,  small_r0, Polarity:0, No_R:20, hfb: 0
+Valid measurement = 0.9979231568016614

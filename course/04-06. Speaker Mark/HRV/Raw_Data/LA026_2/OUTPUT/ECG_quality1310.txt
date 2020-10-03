@@ -1,0 +1,5 @@
+1329, 1552602714, lead_off:False/0.770, confidence:0.697, big_r:0, small_r0, Polarity:0, No_R:89, hfb: 0
+1330, 1552602774, lead_off:False/0.772, confidence:0.698, big_r:0, small_r0, Polarity:0, No_R:96, hfb: 0
+1340, 1552603374, lead_off:False/0.769, confidence:0.589, big_r:0, small_r0, Polarity:0, No_R:107, hfb: 4
+1341, 1552603434, lead_off:False/0.769, confidence:0.541, big_r:0, small_r1, Polarity:0, No_R:109, hfb: 2
+1342, 1552603494, lead_off:False/0.767, confidence:0.190, big_r:0, small_r2, Polarity:0, No_R:84, hfb: 10

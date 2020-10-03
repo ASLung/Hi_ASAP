@@ -1,0 +1,1 @@
+1, 1552111719, lead_off:False/0.869, confidence:0.723, big_r:0, small_r0, Polarity:0, No_R:101, hfb: 0

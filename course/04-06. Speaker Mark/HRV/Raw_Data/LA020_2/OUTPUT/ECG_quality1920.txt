@@ -1,0 +1,3 @@
+1943, 1552228239, lead_off:False/0.865, confidence:0.538, big_r:0, small_r0, Polarity:0, No_R:104, hfb: 0
+1944, 1552228299, lead_off:False/0.864, confidence:0.684, big_r:0, small_r0, Polarity:0, No_R:98, hfb: 0
+1981, 1552230519, lead_off:False/0.865, confidence:0.699, big_r:0, small_r0, Polarity:0, No_R:103, hfb: 0

@@ -1,0 +1,17 @@
+534, 1552143699, lead_off:False/0.874, confidence:0.735, big_r:0, small_r0, Polarity:0, No_R:98, hfb: 0
+618, 1552148739, lead_off:False/0.875, confidence:0.747, big_r:0, small_r0, Polarity:0, No_R:91, hfb: 0
+666, 1552151619, lead_off:False/0.876, confidence:0.704, big_r:0, small_r0, Polarity:0, No_R:98, hfb: 2
+676, 1552152219, lead_off:False/0.874, confidence:0.700, big_r:0, small_r1, Polarity:0, No_R:90, hfb: 0
+677, 1552152279, lead_off:False/0.874, confidence:0.557, big_r:0, small_r1, Polarity:0, No_R:88, hfb: 0
+678, 1552152339, lead_off:False/0.873, confidence:0.393, big_r:0, small_r0, Polarity:0, No_R:84, hfb: 0
+679, 1552152399, lead_off:False/0.874, confidence:0.478, big_r:0, small_r0, Polarity:0, No_R:90, hfb: 0
+684, 1552152699, lead_off:False/0.874, confidence:0.595, big_r:0, small_r0, Polarity:0, No_R:74, hfb: 0
+685, 1552152759, lead_off:False/0.874, confidence:0.404, big_r:0, small_r0, Polarity:0, No_R:89, hfb: 0
+686, 1552152819, lead_off:False/0.874, confidence:0.477, big_r:0, small_r1, Polarity:0, No_R:86, hfb: 0
+687, 1552152879, lead_off:False/0.873, confidence:0.667, big_r:0, small_r0, Polarity:0, No_R:84, hfb: 0
+688, 1552152939, lead_off:False/0.873, confidence:0.245, big_r:0, small_r0, Polarity:0, No_R:94, hfb: 0
+689, 1552152999, lead_off:False/0.873, confidence:0.674, big_r:0, small_r1, Polarity:0, No_R:92, hfb: 0
+690, 1552153059, lead_off:False/0.874, confidence:0.596, big_r:0, small_r0, Polarity:0, No_R:89, hfb: 0
+692, 1552153179, lead_off:False/0.874, confidence:0.469, big_r:0, small_r0, Polarity:0, No_R:81, hfb: 0
+693, 1552153239, lead_off:False/0.873, confidence:0.309, big_r:0, small_r0, Polarity:0, No_R:94, hfb: 0
+694, 1552153299, lead_off:False/0.874, confidence:0.480, big_r:0, small_r0, Polarity:0, No_R:98, hfb: 0
