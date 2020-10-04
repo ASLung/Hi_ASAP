@@ -7,8 +7,8 @@ Add source code of
 02. Hot-spot identification
 
 Update at 2020-10-03
-04-06 Section data
+add 04-06 Section data
 
 Update at 2020-10-04
-02. section Source code and Test data
+add 02. section Source code and Test data
 
