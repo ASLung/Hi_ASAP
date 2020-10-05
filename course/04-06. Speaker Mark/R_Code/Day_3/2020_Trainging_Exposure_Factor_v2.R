@@ -56,39 +56,22 @@ Final_Model_2 <- lm(ALP_PM2.5 ~ ALO_PM2.5+S_Incense_JPaper+S_Other2+Vent_D3_1+Ve
 summary(Final_Model_2)
 
 # To determine the partial R2 of each independent variable
-M1 <- lm(ALP_PM2.5 ~ 1, data = aa)
-M2 <- lm(ALP_PM2.5 ~ ALO_PM2.5, data = aa)
-M3 <- lm(ALP_PM2.5 ~ ALO_PM2.5+S_Incense_JPaper, data = aa)
-M4 <- lm(ALP_PM2.5 ~ ALO_PM2.5+S_Incense_JPaper+S_Other2, data = aa)
-M5 <- lm(ALP_PM2.5 ~ ALO_PM2.5+S_Incense_JPaper+S_Other2+Vent_D3_1, data = aa)
-M6 <- lm(ALP_PM2.5 ~ ALO_PM2.5+S_Incense_JPaper+S_Other2+Vent_D3_1+Vent_D3_2, data = aa)
+# install.packages("rsq") (only for first time to use)
+library("rsq")
 
-Partial_R2_1 <- rsq.partial(Final_Model_2,M6)
-Partial_R2_2 <- rsq.partial(M6,M5)
-Partial_R2_3 <- rsq.partial(M5,M4)
-Partial_R2_4 <- rsq.partial(M4,M3)
-Partial_R2_5 <- rsq.partial(M3,M2)
-Partial_R2_6 <- rsq.partial(M2,M1)
+Partial_R2 <- rsq.partial(Final_Model_2)
 
-## To print out GAMM results to txt file
+# To print out final model results to txt file
 sink("Exposure_Factor_Results.txt") # redirect console output to a file
 print("Stepwise")
-print(Final_Model)
+print(step(lm(ALP_PM2.5~.,data=aa),direction="both"))
 print("Final model")
 print(summary(Final_Model_2))
-print("Partial R2 of Season")
-print(Partial_R2_1)
-print("Partial R2 of Vent_D3_2")
-print(Partial_R2_2)
-print("Partial R2 of Vent_D3_1")
-print(Partial_R2_3)
-print("Partial R2 of S_Other2")
-print(Partial_R2_4)
-print("Partial R2 of S_Incense_JPaper")
-print(Partial_R2_5)
-print("Partial R2 of ALO_PM2.5")
-print(Partial_R2_6)
+print("Partial R2")
+print(Partial_R2)
 sink()  # return output to the terminal
+
+
 
 
 

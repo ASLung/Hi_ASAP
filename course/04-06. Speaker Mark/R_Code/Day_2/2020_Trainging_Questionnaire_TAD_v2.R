@@ -4,10 +4,10 @@ rm(list=ls())
 
 location <- "D:/"
 
-cmd1 <- paste0("setwd('",location,"HiASAP/2020_Training_Course/Dataset/Questionnaire_TAD/output')")
+cmd1 <- paste0("setwd('",location,"HiASAP/Questionnaire_TAD/output')")
 eval(parse(text=cmd1))
 
-way <- paste0(location,"HiASAP/2020_Training_Course/Dataset/Questionnaire_TAD")
+way <- paste0(location,"HiASAP/Questionnaire_TAD")
 
 Q <- read.csv(paste0(way,"/Questionnaire_Raw.csv"))
 

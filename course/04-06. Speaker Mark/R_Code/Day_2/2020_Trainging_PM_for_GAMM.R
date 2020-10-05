@@ -67,7 +67,7 @@ for(i in 1:length(aa)){
 # To calculate 5-min average PM data for Generalized Additive Mixed Model (GAMM) (based on Rooti time)      
 way_Rooti <- paste0(location,"HiASAP/HRV/Raw_Data/")
 aa2 <- list.files(paste0(location,"HiASAP/PM/output/"),pattern="P_Orig")
-for (p in 1:length(aa2)) {
+for (p in 1) {
     # To read the time of heart rate variability monitoring form Rooti
     filename <- paste0(location,"HiASAP/PM/output/",aa2[p])
     ASLUNGt <- read.csv(filename)
@@ -90,7 +90,7 @@ for (p in 1:length(aa2)) {
     
     ASLUNGt2$date <- as.POSIXct(ASLUNGt2$date,tz="Asia/Taipei")
     ASLUNGt3<-data.frame()
-    # If the start time of PM monitoring was different from the strat time of HRV monitoring,
+    # If the start time of PM monitoring was different from the start time of HRV monitoring,
     # we add the start time of HRV monitoring to PM data to have the consistent 5-min interval
     if((substr(ASLUNGt2$date[1],1,16))!=(substr(Date_AL2[1],1,16))){
         dd <- as.POSIXct(Date_AL2[1],tz="Asia/Taipei")
