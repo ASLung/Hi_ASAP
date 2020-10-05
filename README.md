@@ -10,5 +10,7 @@ Update at 2020-10-03
 add 04-06 Section data
 
 Update at 2020-10-04
-add 02. section Source code and Test data
+add test data of Mark's section
+
+Update at 2020-10-05 add Candice's , Mark's and Joanne's powerpoint
 
