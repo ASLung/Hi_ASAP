@@ -12,5 +12,5 @@ add 04-06 Section data
 Update at 2020-10-04
 add test data of Mark's section
 
-Update at 2020-10-05 add Candice's and Joanne's powerpoint
+Update at 2020-10-05 add Candice's , Mark's and Joanne's powerpoint
 
