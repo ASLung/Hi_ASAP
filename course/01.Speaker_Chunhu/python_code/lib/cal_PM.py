@@ -8,7 +8,7 @@ def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
     date=time.mktime(DataTime.timetuple())
     #print(CalFactor2)
     try:
-
+        factor=pd.DataFrame()
         factor = CalFactor2.loc[
             (CalFactor2['aslung_id'] == aslung_id) & (CalFactor2['PM'] == PM ) & (CalFactor2['start_timestamp'] < date) & (CalFactor2['end_timestamp'] > date) ].reset_index(drop=True)
         #print(factor)
@@ -30,7 +30,7 @@ def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
 
     except Exception as e:
         print("Get Error........................")
-        if not factor:
-            print("There is no calibration factor at the sampling time of "+DataTime+" !")
+        if factor.empty:
+            print("There is no calibration factor at the sampling time of ",DataTime," !")
         else:
             print(e)
