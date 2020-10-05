@@ -85,20 +85,27 @@ def cal_factor(std_df, AS_df,aslung_device, aslung="pm25",std="PM2.5", low=0, hi
     sm_df=pd.DataFrame()
     for asid in aslung_device:
         as_id='%s'%asid[:2]+"-"+'%s'%asid[-4:]
+        as_id2=as_id
+        print("as_id: ", as_id)
         if aslung=="pm125" and std=="PM125":
             pass
         else:
             as_id=data.loc[(data['aslung_id']==as_id) & (data['std_%s'%std]<=high) & (data['std_%s'%std]>=low)]
         as_id=as_id.reset_index()
+        print("DF")
+        print(as_id)
         sm=pm_pwlf_assess(as_id, aslung, std)
-        sm_df=sm_df.append(sm[0])
 
-        sm_df['aslung_id']=asid
-        sm_df['Golden_standard']='y_goldenstand'
+
+        sm[0]['aslung_id']='%s'%asid[:2]+"-"+'%s'%asid[-4:]
+        sm[0]['Golden_standard']='y_goldenstand'
+        sm[0]["PM"] = std
+
+        sm_df = sm_df.append(sm[0])
 
 
     #sm_df = sm_df.loc[:,col_name_rest]
-        sm_df["PM"]=std
+
         sm_df=sm_df[['Golden_standard','aslung_id','slope1', 'intercept1', 'region1_mae', 'region1_rmse','break_point1',
                               'slope2', 'intercept2', 'region2_mae', 'region2_rmse',
                                 'r2', 'total_mae', 'total_rmse','sample','PM']]
