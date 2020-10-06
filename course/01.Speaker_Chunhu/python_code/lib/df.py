@@ -92,25 +92,17 @@ def cal_factor(std_df, AS_df,aslung_device, aslung="pm25",std="PM2.5", low=0, hi
         else:
             as_id=data.loc[(data['aslung_id']==as_id) & (data['std_%s'%std]<=high) & (data['std_%s'%std]>=low)]
         as_id=as_id.reset_index()
-        print("DF")
-        print(as_id)
         sm=pm_pwlf_assess(as_id, aslung, std)
-
 
         sm[0]['aslung_id']='%s'%asid[:2]+"-"+'%s'%asid[-4:]
         sm[0]['Golden_standard']='y_goldenstand'
         sm[0]["PM"] = std
 
         sm_df = sm_df.append(sm[0])
-
-
-    #sm_df = sm_df.loc[:,col_name_rest]
-
         sm_df=sm_df[['Golden_standard','aslung_id','slope1', 'intercept1', 'region1_mae', 'region1_rmse','break_point1',
                               'slope2', 'intercept2', 'region2_mae', 'region2_rmse',
                                 'r2', 'total_mae', 'total_rmse','sample','PM']]
     return sm_df
-
 
 
 def regress(df,aslung_PM='pm25', std_PM='PM2.5'):
@@ -124,22 +116,6 @@ def regress(df,aslung_PM='pm25', std_PM='PM2.5'):
 
 def SL_regress(std_df, AS_df,aslung_device, aslung="pm25",std="PM2.5", low=0, high=200):
     Starttime = time.time()
-    # --pm1_std_cal_slope  1.2301
-    # --pm1_std_cal_intercept - 0.1215
-    # --pm25_std_cal_slope  1.2336
-    # --pm25_std_cal_intercept 0.2190
-    # --pm10_std_cal_slope  1.2337
-    # --pm10_std_cal_intercept 0.3636
-    # if std=='PM1':
-    #     gs=1.2301
-    #     gi=-0.1215
-    # elif std=='PM2.5':
-    #     gs=1.2336
-    #     gi=0.2190
-    # elif std=="PM10":
-    #     gs=1.2337
-    #     gi=0.3636
-    # std_df['std_%s'%std]=std_df['std_%s'%std]*gs+gi
     data = data_merge(std_df, AS_df, aslung, std)
     sm_df=pd.DataFrame()
 
