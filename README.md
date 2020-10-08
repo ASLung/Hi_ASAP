@@ -16,3 +16,4 @@ Update at 2020-10-05 add Candice's , Mark's and Joanne's powerpoint
 
 Update at 2020-10-06 Bug fix, when write AS-Lung ID into calibration factor file(2 segments regression model)
 
+Update at 2020-10-08 Slice update of Mark's
