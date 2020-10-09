@@ -1,7 +1,8 @@
 import numpy as np
 from lib.lib import getHour
-import time
-from lib.cal_factor_2s import cal_factor_2s
+
+gpeak=10
+
 #PM三個數值相同，且原始資料大於50；或原始資料<1 均以缺漏值處理
 def SetPMNa(d1, d2,d3):
     if (d1==d3 and d2==d3 and d1==d3 and d1>50) or (d1 < 1):
@@ -37,10 +38,11 @@ def shift_in_row(database):
 def ratio_in_row(row):
     _ret = np.nan
     ratio_front =  row['pm25_c'] / row['mean_front']
-    if (ratio_front<10) :
+    if (ratio_front<int(gpeak)) :
         _ret = row['pm25_c']
     else:
         _ret = np.nan
+    #print("Ghost Peak: ",gpeak)
     return _ret
 
 # if PM sample size < 2/3 per hour, Set PM value to NULL
