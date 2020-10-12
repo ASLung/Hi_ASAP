@@ -19,3 +19,6 @@ Update at 2020-10-06 Bug fix, when write AS-Lung ID into calibration factor file
 Update at 2020-10-09 Slice update of Candice's and Mark's, add lecture on 2019
 
 Update at 2020-10-09 Update slide of session 2 at 10/8 (Speaker: Candice)
+
+Upate at 2020-10-12 Optimise error expression when run python code to do data cleaning
+
