@@ -46,7 +46,12 @@ if __name__ == '__main__':
     print(*aslung_device, sep=",")
 
     #Set data as DataFrane
-    std_df_list = std_df(Standard_file_path[0])
+    try:
+        std_df_list = std_df(Standard_file_path[0])
+    except Exception as e:
+        print(e)
+        print("Please check reference PM, there is no reference PM data in the folder of 'ASLung_Calibration_Factor_RawData'")
+        print("Or please check file name of the reference PM, it should be contain the key word of 'standard'")
     std_max = std_df_list[0].copy().reset_index()[['datatime','std_PM2.5']]
     std_max_PM25 = std_max.max()['std_PM2.5']
     std_max_time = std_max.loc[(std_max['std_PM2.5'] == std_max_PM25)].reset_index()['datatime'][0]

@@ -5,7 +5,6 @@ def dataurls():
     calfactorurl = "https://script.google.com/macros/s/AKfycbwfhUbpNqk5AE4HpUg0Dp-0pT1oMKa1mxLzWWAXb3dlnhTYRN8/exec"
     return calfactorurl
 
-
 if __name__ == "__main__":
     options = ["ASLung calibration factor from reference instrument", "Data cleaning and calibrate ASLung raw data"]
     def let_user_pick(options):

@@ -31,6 +31,6 @@ def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
     except Exception as e:
         print("Get Error........................")
         if factor.empty:
-            print("There is no calibration factor at the sampling time of ",DataTime," !")
+            print(aslung_id, ": There is no calibration factor at the sampling time of ",DataTime," !")
         else:
             print(e)

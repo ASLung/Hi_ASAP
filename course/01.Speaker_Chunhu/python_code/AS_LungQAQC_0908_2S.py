@@ -28,21 +28,17 @@ Log='log'
 CreateFolder(Cal)
 CreateFolder(Log)
 CreateFolder(Raw)
-#CreateFolder(Error)
-#CreateFolder(Finish)
 CurrentPath=os.getcwd()
 DataPath=os.path.join(CurrentPath, Raw)
 calfactorurl=dataurls()
-CalFactor2=cal_factor_2s(calfactorurl)
-#print(CalFactor2)
-tzone=GetTimeZone()
-#print(tzone)
 
-#print(CalFactor2)
+CalFactor2=cal_factor_2s(calfactorurl)
+tzone=GetTimeZone()
+
 CalFactor2['start_timestamp']=CalFactor2['Start_date'].apply(aslung_id_time, column='start')
 CalFactor2['end_timestamp']=CalFactor2['End_date'].apply(aslung_id_time, column='end')
 CSV_Files=FindSubFiles(DataPath)
-cal_data = pd.DataFrame() #把所有資料合併成 DataFrame的資料集
+cal_data = pd.DataFrame()
 
 
 
@@ -65,26 +61,35 @@ def cal_SD_data():
     data_error = []
     #print(CSV_Files)
     for datafile in CSV_Files:
+        print("Data file: ",datafile)
         try:
             if (datafile[-3:] == 'csv'):
                 nf=datafile.split("\\")
-                f = [s for s in nf if "AL-" in s][0]
-                fcsv= [s for s in nf if "csv" in s][0]                
-                print("Calculate data file of : ",fcsv)
-                
-                CreateFolder(os.path.join(Cal, f))
+                try:
+                    f = [s for s in nf if "AL-" in s][0]
+                except Exception as e:
+                    print(e)
+                    print("Cannot find aslung id prefix 'AL-', please check your data file or folder name")
+                    break
                 #read data file
+                aslung_id = f[f.find('AL-'):f.find('AL-') + 7]  # find aslung_id
+                fcsv = [s for s in nf if "csv" in s][0]
+                if f == fcsv:
+                    f = nf[len(nf) - 3] + "_" + nf[len(nf) - 2]
+                print("Save Folder: ", f)
+                CreateFolder(os.path.join(Cal, f))
+                print("Calculate data file of : ", fcsv)
+
                 csv_data=pd.read_csv(datafile)
-                #print(csv_data.head())
                 data_date = csv_data['date'][1]
                 csv_data['datatime'] = csv_data.apply(lambda row: StrtoDatatime(row['date'], row['time']), axis=1)
                 log_interval=GetLogInterval(csv_data['datatime'])
 
-
                 csv_data=csv_data.set_index('datatime')
                 csv_data = csv_data.reset_index()
-                aslung_id=f[f.find('AL-'):f.find('AL-')+7] #find aslung_id
                 csv_data['aslung_id']=aslung_id
+                print("AS-Lung ID: ", aslung_id)
+                print("Log interval: ", log_interval, " secs")
 
                 if (f.find('AL-')-1)<0:
                     pass
@@ -112,13 +117,15 @@ def cal_SD_data():
                 csv_data.to_csv(os.path.join(Cal, f) + "/cal_"+ fcsv,encoding='UTF-8',index=False)
             cal_data.append(csv_data)
         except Exception as e:
-            df_err = [aslung_id, data_date, e]
             print("data error:", e)
+            df_err = [aslung_id, data_date, e, f]
+
+
             data_error.append(df_err)
     today=datetime.datetime.today().strftime("%Y%m%d")
 
     #data_num = pd.DataFrame(data_num, columns=['aslung_id', 'DataDate', 'data number'])
-    data_error = pd.DataFrame(data_error, columns=['aslung_id', 'DataDate', 'Error Code'])
+    data_error = pd.DataFrame(data_error, columns=['aslung_id', 'DataDate', 'Error Code','File'])
 
     if data_error.empty:
         pass

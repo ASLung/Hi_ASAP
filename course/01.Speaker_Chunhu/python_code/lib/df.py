@@ -52,7 +52,7 @@ def ASLung_df(ASlung_file_path):
         else:
             aslung_id = fcsv[fcsv.find("AL-"):fcsv.find("AL-") + 7]
 
-        df=pd.read_csv(f)
+        df=pd.read_csv(f,delimiter=',',error_bad_lines=False)
         #aslung 負值除錯
         df=df.loc[(df['pm1']>0) & (df['pm25']>0) &(df['pm10']>0)]
         #日期時間相加

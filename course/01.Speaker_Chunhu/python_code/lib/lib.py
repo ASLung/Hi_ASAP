@@ -99,14 +99,30 @@ def GetTimeZone():
     return tzone
 
 
+def interval2(row1, row2):
+    log_int=datetime.datetime.timestamp(row1)-datetime.datetime.timestamp(row2)
+    return log_int
+
+
+def ConToTimestamp(row):
+    return datetime.datetime.timestamp(row)
+
+
 def GetLogInterval(time_col):
-    time1 = datetime.datetime.timestamp(time_col[len(time_col)-4])
-    time2 = datetime.datetime.timestamp(time_col[len(time_col)-5])
-    time3 = datetime.datetime.timestamp(time_col[len(time_col)-6])
-    time4 = datetime.datetime.timestamp(time_col[len(time_col)-7])
-    interval=(abs(time4-time3)+abs(time3-time2)+abs(time2-time1))/3
-    if interval <30 and interval > 10:
+    tt=pd.DataFrame(time_col)
+    tt['t1']=tt['datatime'].apply(ConToTimestamp)
+    tt['t2']=tt['t1'].shift(1)
+    tt['interval']=tt['t1']-tt['t2']
+    log15 = tt.loc[(tt['interval'] > 0) & (tt['interval'] < 20)]
+    log30 = tt.loc[(tt['interval'] > 20) & (tt['interval'] < 40)]
+    log60 = tt.loc[(tt['interval'] > 50) & (tt['interval'] < 70)]
+    log500 = tt.loc[(tt['interval'] > 450) & (tt['interval'] < 550)]
+    if ((len(log15) > len (log30)) & (len(log15) > len (log60)) & (len(log15) > len (log500))):
         log_interval=15
-    elif interval <180 and interval > 45:
-        log_interval=60
+    elif ((len(log30) > len (log15)) & (len(log30) > len (log60)) & (len(log30) > len (log500))):
+        log_interval = 30
+    elif ((len(log60) > len (log15)) & (len(log60) > len (log30)) & (len(log60) > len (log500))):
+        log_interval = 60
+    elif ((len(log500) > len (log15)) & (len(log500) > len (log30)) & (len(log500) > len (log60))):
+        log_interval = 500
     return log_interval
