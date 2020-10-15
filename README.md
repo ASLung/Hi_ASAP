@@ -22,4 +22,6 @@ Update at 2020-10-09 Update slide of session 2 at 10/8 (Speaker: Candice)
 
 Update at 2020-10-12 Optimise error expression when run python code to do data cleaning
 
+Update at 2020-10-15 Upload exam data, please email the answer sheet to chunhu (lch0909@gate.sinica.edu.tw)
+
  
