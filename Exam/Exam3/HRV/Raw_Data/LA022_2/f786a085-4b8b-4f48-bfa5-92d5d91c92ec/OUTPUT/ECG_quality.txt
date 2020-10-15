@@ -1,9 +1,0 @@
-439, 1552829842, lead_off:False/1.002, confidence:0.789, big_r:2, small_r0, Polarity:0, No_R:95, hfb: 2
-440, 1552829902, lead_off:False/0.923, confidence:0.745, big_r:4, small_r0, Polarity:0, No_R:94, hfb: 6
-441, 1552829962, lead_off:False/1.182, confidence:0.707, big_r:2, small_r0, Polarity:0, No_R:92, hfb: 4
-1815, 1552912402, lead_off:False/4.125, confidence:0.580, big_r:0, small_r1, Polarity:0, No_R:100, hfb: 0
-1817, 1552912522, lead_off:False/9.021, confidence:0.573, big_r:0, small_r0, Polarity:0, No_R:96, hfb: 0
-2074, 1552927942, lead_off:False/6.411, confidence:0.204, big_r:0, small_r1, Polarity:0, No_R:54, hfb: 2
-2075, 1552928002, lead_off:False/8.289, confidence:0.146, big_r:0, small_r0, Polarity:0, No_R:48, hfb: 2
-2081, 1552928362, lead_off:False/9.745, confidence:0.630, big_r:0, small_r0, Polarity:0, No_R:73, hfb: 0
-2991, 1552982962, lead_off:False/11.145, confidence:0.000, big_r:1, small_r0, Polarity:0, No_R:6, hfb: 3
