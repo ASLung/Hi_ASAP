@@ -59,7 +59,9 @@ def SetNanHour(df_hour, time_col, log_interval, PM_data,PM='pm25'):
 
 
 def PM1AsPM25(cPM1, cPM25):
-    if float(cPM1)==np.nan:
+    if cPM1=="":
+        pass
+    elif float(cPM1)==np.nan:
         pass
     elif float(cPM1)>float(cPM25):
         cPM1=cPM25

@@ -18,7 +18,7 @@ CreateFolder(Data_factor)
 CreateFolder(Data_Raw)
 file_path=os.path.join(current_path,Data_Raw)
 Standard_file_path = sorted(glob.glob(os.path.join(current_path, Data_Raw,'*standard*')), reverse=False)
-ASlung_file_path = sorted(glob.glob(os.path.join(current_path, Data_Raw,'*AL*')), reverse=False)
+ASlung_file_path = sorted(glob.glob(os.path.join(current_path, Data_Raw,'*_AL*')), reverse=False)
 
 if __name__ == '__main__':
     options = ["Simple linear regrssion", "Two segments regression"]
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     for f in ASlung_file_path:
         fcsv=f.split("\\")[-1:][0]
         if f.find("AL-") < 0:
-            asid = "AL-" + f[f.find("AL") + 2:f.find("AL") + 6]
+            asid = "AL-" + f[f.find("_AL") + 3:f.find("_AL") + 7]
         else:
             asid = "AL-" + f[f.find("AL-") + 3:f.find("AL") + 7]
         aslung_device.append(asid)
@@ -92,5 +92,5 @@ if __name__ == '__main__':
     pm_factor['Start_date'] = dt.datetime(end_time.year, end_time.month, end_time.day)
     pm_factor['End_date'] = ''
 
-    tdate = dt.datetime.now().__format__("%Y%m%d")
+    tdate = dt.datetime.now().__format__("%Y%m%d%H%M")
     pm_factor.to_csv(os.path.join(current_path, Data_factor)+"/"+fname+"_"+tdate+".csv", encoding="UTF-8", index=False)

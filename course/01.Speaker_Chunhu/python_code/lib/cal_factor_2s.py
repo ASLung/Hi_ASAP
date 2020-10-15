@@ -82,6 +82,11 @@ def PM_factor_and_Cal_data(aslung_id,PM, aslung_data, DataTime, CalFactor2):
         factor = CalFactor2.loc[
             (CalFactor2['aslung_id'] == aslung_id) & (CalFactor2['PM'] == PM )& (CalFactor2['start_timestamp'] < date) & (
                     CalFactor2['end_timestamp'] > date) ].reset_index(drop=True)
+
+        if (factor.empty):
+            print("There is no calbriation factor during sample period!")
+
+
         if aslung_data < factor['break_point1'][0]:
             slope=factor['slope1'][0]
             intercept=factor['intercept1'][0]

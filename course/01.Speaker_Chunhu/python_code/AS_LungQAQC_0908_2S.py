@@ -7,7 +7,7 @@ import warnings
 import datetime
 from lib.cleanPM import *
 from lib.SetNaN import *
-from lib.cal_PM import PM_factor_and_Cal_data2
+from lib.cal_PM import PM_factor_and_Cal_data2,Get_Factor
 from lib.cal_factor_2s import *
 from run import dataurls
 
@@ -24,7 +24,7 @@ pd.set_option('display.max_columns', None)
 Cal='ASLung_Calibrated_Data'
 Raw="ASLung_RawData"
 Log='log'
-#Finish='ASLung_RawData_BK'
+Finish='ASLung_RawData_BK'
 CreateFolder(Cal)
 CreateFolder(Log)
 CreateFolder(Raw)
@@ -40,9 +40,6 @@ CalFactor2['end_timestamp']=CalFactor2['End_date'].apply(aslung_id_time, column=
 CSV_Files=FindSubFiles(DataPath)
 cal_data = pd.DataFrame()
 
-
-
-
 def cal_job(q,csv_data,i):
     print("Cal Job",i," Start Time: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     csv_data['cPM1'] = csv_data.apply(
@@ -57,7 +54,7 @@ def cal_job(q,csv_data,i):
 
 #Calculate AS-Lung data in the SD card
 def cal_SD_data():
-    # data_num = []
+    data_num = []
     data_error = []
     #print(CSV_Files)
     for datafile in CSV_Files:
@@ -67,19 +64,19 @@ def cal_SD_data():
                 nf=datafile.split("\\")
                 try:
                     f = [s for s in nf if "AL-" in s][0]
+                    aslung_id = "AL-"+f[f.find('AL-')+3:f.find('AL-') + 7]  # find aslung_id
                 except Exception as e:
-                    print(e)
-                    print("Cannot find aslung id prefix 'AL-', please check your data file or folder name")
-                    break
-                #read data file
-                aslung_id = f[f.find('AL-'):f.find('AL-') + 7]  # find aslung_id
+                    f = [s for s in nf if "_AL" in s][0]
+                    aslung_id = "AL-"+f[f.find('_AL')+3:f.find('_AL') + 7]  # find aslung_id
+
+                asf = [s for s in nf if "AS_Lung_" in s][0]
                 fcsv = [s for s in nf if "csv" in s][0]
                 if f == fcsv:
                     f = nf[len(nf) - 3] + "_" + nf[len(nf) - 2]
-                print("Save Folder: ", f)
-                CreateFolder(os.path.join(Cal, f))
-                print("Calculate data file of : ", fcsv)
-
+                if asf[-7:]==aslung_id:
+                    savef = asf
+                else:
+                    savef = asf + "_" + aslung_id
                 csv_data=pd.read_csv(datafile)
                 data_date = csv_data['date'][1]
                 csv_data['datatime'] = csv_data.apply(lambda row: StrtoDatatime(row['date'], row['time']), axis=1)
@@ -105,27 +102,47 @@ def cal_SD_data():
                 csv_data['sht_h'] = csv_data['sht_h'].apply(SetNan)
                 csv_data['co2'] = csv_data['co2'].apply(SetNan)
                 #print(csv_data.head())
-                csv_data['cPM1'] = csv_data.apply(
+
+                factorPM01 = Get_Factor(aslung_id, 'PM1', CalFactor2)
+                factorPM25 = Get_Factor(aslung_id, 'PM2.5', CalFactor2)
+
+                if (factorPM01.empty) & (factorPM25.empty) :
+
+                    print("There is no calibration factor of ", aslung_id)
+                    print("Please check your google sheet!")
+                    df_err = [aslung_id, data_date, "There is no calibration factor", savef]
+                    data_error.append(df_err)
+                else:
+                    print("Save Folder: ", savef)
+                    CreateFolder(os.path.join(Cal, savef))
+                    print("Calculate data file of : ", fcsv)
+                    csv_data['cPM1'] = csv_data.apply(
                     lambda row: PM_factor_and_Cal_data2(row['aslung_id'], 'PM1', row['pm1_clean'], row['datatime'],CalFactor2),
                     axis=1)
-                csv_data['cPM2.5'] = csv_data.apply(
+                    csv_data['cPM2.5'] = csv_data.apply(
                     lambda row: PM_factor_and_Cal_data2(row['aslung_id'], 'PM2.5', row['pm25_clean'], row['datatime'],CalFactor2),
                     axis=1)
-                csv_data['cPM1'] = csv_data.apply(lambda row: PM1AsPM25(row['cPM1'], row['cPM2.5']), axis=1)
-                csv_data['Hour']=csv_data.apply(lambda row: getHour(row['time']), axis=1)
-                csv_data=CheckHourData(csv_data, 'time',log_interval)
-                csv_data.to_csv(os.path.join(Cal, f) + "/cal_"+ fcsv,encoding='UTF-8',index=False)
+                    csv_data['cPM1'] = csv_data.apply(lambda row: PM1AsPM25(row['cPM1'], row['cPM2.5']), axis=1)
+                    csv_data['Hour']=csv_data.apply(lambda row: getHour(row['time']), axis=1)
+                    csv_data=CheckHourData(csv_data, 'time',log_interval)
+                    csv_data.to_csv(os.path.join(Cal, savef) + "/cal_"+ fcsv,encoding='UTF-8',index=False)
+                    #check data recovery-----Start
+                    samples = len(csv_data)
+                    data_recovery=round((samples/(1440*(60/log_interval)))*100,1)
+                    df_num = [aslung_id, fcsv, samples,data_recovery]
+                    data_num.append(df_num)
+                    # check data recovery-----End
+
             cal_data.append(csv_data)
         except Exception as e:
             print("data error:", e)
-            df_err = [aslung_id, data_date, e, f]
-
-
+            df_err = [aslung_id, data_date, e, savef]
             data_error.append(df_err)
-    today=datetime.datetime.today().strftime("%Y%m%d")
+    today=datetime.datetime.today().strftime("%Y%m%d%H%M")
 
-    #data_num = pd.DataFrame(data_num, columns=['aslung_id', 'DataDate', 'data number'])
-    data_error = pd.DataFrame(data_error, columns=['aslung_id', 'DataDate', 'Error Code','File'])
+    data_num = pd.DataFrame(data_num, columns=['aslung_id', 'Data file', 'Samples', 'Data recovery'])
+    data_error = pd.DataFrame(data_error, columns=['aslung_id', 'DataDate', 'Error Message','Folder'])
+    data_num.to_csv('log/Sample_size_'+today+'.csv',index=False)
 
     if data_error.empty:
         pass
@@ -151,12 +168,10 @@ def cal_database_data():
                 csv_data['datatime(UTC+0)'] =pd.to_datetime(csv_data['datatime(UTC+0)'], format='%Y-%m-%d %H:%M:%S') #csv_data.apply(lambda row: StrtoDatatime(row['date'], row['time']), axis=1)
                 log_interval=GetLogInterval(csv_data['datatime(UTC+0)'])
                 print(log_interval)
-
                 try:
                     csv_data=csv_data.drop(columns=['id','description','error','sht31','height','city_name','town_name','location_name'])
                 except:
                     pass
-
                 csv_data=RemovePMGhosPeak(csv_data, PM1='pm1', PM25='pm2.5', PM10='pm10')
                 csv_data['temperature'] = csv_data['temperature'].apply(SetNan)
                 csv_data['rh'] = csv_data['rh'].apply(SetNan)

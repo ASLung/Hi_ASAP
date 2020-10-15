@@ -1,6 +1,4 @@
-import time
 import numpy as np
-from lib.cal_factor_2s import cal_factor_2s
 from lib.lib import *
 
 def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
@@ -11,7 +9,6 @@ def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
         factor=pd.DataFrame()
         factor = CalFactor2.loc[
             (CalFactor2['aslung_id'] == aslung_id) & (CalFactor2['PM'] == PM ) & (CalFactor2['start_timestamp'] < date) & (CalFactor2['end_timestamp'] > date) ].reset_index(drop=True)
-        #print(factor)
         if aslung_data < factor['break_point1'][0]:
             slope=factor['slope1'][0]
             intercept=factor['intercept1'][0]
@@ -34,3 +31,14 @@ def PM_factor_and_Cal_data2(aslung_id,PM, aslung_data, DataTime,CalFactor2):
             print(aslung_id, ": There is no calibration factor at the sampling time of ",DataTime," !")
         else:
             print(e)
+
+
+
+def Get_Factor(aslung_id,PM, CalFactor2):
+    try:
+        #factor=pd.DataFrame()
+        factor = CalFactor2.loc[
+            (CalFactor2['aslung_id'] == aslung_id) & (CalFactor2['PM'] == PM ) ].reset_index(drop=True)
+        return factor
+    except:
+        pass
